@@ -7,5 +7,7 @@
 </template>
 
 <script setup lang="ts">
-
+useSeoMeta({
+  title: 'Блог'
+})
 </script>

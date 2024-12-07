@@ -6,4 +6,7 @@
 </template>
 <script setup>
   const route = useRoute()
+  useSeoMeta({
+    title: 'Блог'
+  })
 </script>
