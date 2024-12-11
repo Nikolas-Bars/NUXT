@@ -1,11 +1,13 @@
 <template>
   <div>
-    <h1>MY BLOG</h1>
-    <div> id is {{route.params.id}}</div>
+    <article>
+      <ContentDoc />
+    </article>
   </div>
 </template>
 <script setup>
   const route = useRoute()
+  console.log(route.params.slug, 'slug')
   useSeoMeta({
     title: 'Блог'
   })

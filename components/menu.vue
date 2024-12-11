@@ -8,7 +8,7 @@
         <NuxtLink to="/about" >About</NuxtLink>
       </li>
       <li class="link">
-        <NuxtLink to="/blog/[id]" >Blog</NuxtLink>
+        <NuxtLink to="/blog/[...slug]" >Blog</NuxtLink>
       </li>
       <li class="link">
         <NuxtLink to="/projects" >Projects</NuxtLink>
@@ -18,6 +18,6 @@
 </template>
 <style scoped>
 .link {
-  @apply hover:bg-blue-300 p-1.5 bg-blue-500;
+  @apply hover:bg-gray-200 p-1.5 bg-gray-300 rounded-md text-black;
 }
 </style>
