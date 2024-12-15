@@ -1,3 +1,5 @@
 <template>
-  <h1>This page is about me</h1>
+  <article class="prose dark:prose-invert prose-h1:text-blue-400">
+    <ContentDoc path="/about" />
+  </article>
 </template>
