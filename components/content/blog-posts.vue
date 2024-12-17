@@ -1,13 +1,13 @@
 <template>
   <section class="not-prose font-mono">
     <div class="column p-4 text-gray-400 text-sm">
-      <div>date</div>
+      <div style="width: 50px">date</div>
       <div>title</div>
     </div>
     <ul>
       <li v-for="post in posts" :key="post._path">
         <NuxtLink :to="post._path" class="column p-4 rounded-md dark:text-white hover:bg-gray-100 dark:hover:text-black">
-          <div class="text-gray-500">2023</div>
+          <div class="text-gray-500" style="width: 50px">{{post.displayYear ? post.year : " "}}</div>
           <div>{{post.title}}</div>
         </NuxtLink>
       </li>
@@ -19,10 +19,38 @@
 useSeoMeta({
   title: 'Блог'
 })
-const {data: posts} = await useAsyncData(
+const {data: data} = await useAsyncData(
     'blog-list',
-    ()=> queryContent('/blog').where({_path: {$ne: '/blog'}}).only(['_path', 'title']).find()
+    ()=> queryContent('/blog')
+        .where({_path: {$ne: '/blog'}})
+        .only(['_path', 'title', 'publishedAt'])
+        .sort({publishedAt: -1})
+        .find()
 )
+
+const posts = computed(() => {
+
+  const result = [];
+  let lastYear = null;
+
+  if (!data.value) {
+    return []
+  }
+
+  for(const post of data.value) {
+    const year = new Date(post.publishedAt).getFullYear()
+
+    const displayYear = year !== lastYear;
+    post.displayYear = displayYear;
+    result.push(post);
+    post.year = year;
+    lastYear = year;
+    console.log(displayYear)
+  }
+
+  return result
+})
+
 console.log(posts, 'result')
 </script>
 <style scoped>

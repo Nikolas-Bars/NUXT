@@ -1,9 +1,12 @@
+---
 description: A beginner's guide to getting started with Vue 3
 image: /images/images.png
 head:
-meta:
-- name: 'og:image'
-content: /images/images.png
+  meta:
+    - name: 'og:image'
+      content: /images/images.png
+publishedAt: 2024-07-12 17:15:00
+---
 
 # Introduction to Vue 3
 
