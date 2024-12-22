@@ -13,7 +13,7 @@
               TableOfContents
             </div>
             <nav>
-              <TocLinks :links="doc.body.toc.links" />
+              <TocLinks :active-id="activeId" :links="doc.body.toc.links" />
             </nav>
           </aside>
         </div>
@@ -23,8 +23,35 @@
   </article>
 </template>
 <script setup>
-  const route = useRoute()
-  useSeoMeta({
-    title: 'Блог'
+
+const activeId = ref(null);
+
+onMounted(()=> {
+  const callback = (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        activeId.value = entry.target.id;
+        break;
+      }
+    }
+    console.log(entries)
+  }
+  const observer = new IntersectionObserver(callback, {
+    root: null,
+    threshold: 0.5
   })
+  const elements = document.querySelectorAll('h2, h3');
+
+  for (const element of elements) {
+    observer.observe(element)
+  }
+
+  onBeforeUnmount(() => {
+    console.log('onBeforeUnmount', activeId.value)
+    for (const element of elements) {
+      observer.unobserve(element)
+    }
+  })
+})
+
 </script>
