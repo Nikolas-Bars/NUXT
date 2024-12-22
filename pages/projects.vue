@@ -1,7 +1,8 @@
 <template>
-  <article class="prose dark:prose-invert">
+  <article class="prose dark:prose-invert max-w-none">
     <ContentDoc path="/projects" />
   </article>
 </template>
 <script setup lang="ts">
+
 </script>
