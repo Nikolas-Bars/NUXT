@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto max-w-2xl">
-    <header class="flex justify-between border-8 border-gray-200 mt-8 mb-4 p-2">
+    <header class="flex justify-between border-8 border-gray-200 mt-5 mb-4 p-2">
       <div class="flex items-center space-x-4">
         <div>
           <NuxtLink to="/" class="text-xl font-semibold p-2 hover:bg-gray-200">Home</NuxtLink>
